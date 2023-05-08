@@ -1,12 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.example</groupId>
+    <groupId>com.justin</groupId>
     <artifactId>back-end</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.1.0</version>
+    <name>back-end</name>
+    <description>back-end</description>
+    <packaging>pom</packaging>
 
-    
+    <modules>
+        <module>authorization-server</module>
+    </modules>
+
+    <properties>
+        <back-end-tool.version>0.1.0</back-end-tool.version>
+        <back-end-common.version>0.1.0</back-end-common.version>
+        <back-end-practice.version>0.1.0</back-end-practice.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!--        <maven.compiler.source>8</maven.compiler.source>-->
+        <!--        <maven.compiler.target>8</maven.compiler.target>-->
+        <!--        <spring-boot.version>2.7.11</spring-boot.version>-->
+        <!--        <spring-cloud.version>2021.0.6</spring-cloud.version>-->
+        <maven.compiler.source>18</maven.compiler.source>
+        <maven.compiler.target>18</maven.compiler.target>
+        <spring-boot.version>3.0.5</spring-boot.version>
+        <spring-cloud.version>2022.0.2</spring-cloud.version>
+        <mysql-connector-jave.version>8.0.29</mysql-connector-jave.version>
+        <spring-security-oauth2-authorization-server.version>1.0.1</spring-security-oauth2-authorization-server.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!--spring boot dependencies-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!--spring cloud dependencies-->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!--spring security-->
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-oauth2-authorization-server</artifactId>
+                <version>${spring-security-oauth2-authorization-server.version}</version>
+            </dependency>
+            <!--mysql-->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql-connector-jave.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>18</source>
+                    <target>18</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
